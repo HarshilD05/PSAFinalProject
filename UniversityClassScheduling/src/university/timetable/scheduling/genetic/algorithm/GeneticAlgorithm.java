@@ -1,6 +1,8 @@
 package university.timetable.scheduling.genetic.algorithm;
 import java.util.stream.IntStream;
 
+import university.timetable.scheduling.main.UniversityTimetableScheduling;
+
 
 public class GeneticAlgorithm {
 	
@@ -26,6 +28,24 @@ public class GeneticAlgorithm {
 			}else crossOverPopulation.getSchedules().set(x,population.getSchedules().get(x));
 		});
 		return crossOverPopulation;
+	}
+	
+	public Schedule crossOverSchedule(Schedule schedule1,Schedule schedule2) {
+		Schedule crossoverSchedule= new Schedule(data).initialize();
+		IntStream.range(0, crossoverSchedule.getClasses().size()).forEach(x -> {
+			if(Math.random()>0.5) crossoverSchedule.getClasses().set(x,schedule1.getClasses().get(x));
+			else crossoverSchedule.getClasses().set(x,schedule2.getClasses().get(x));
+		});
+		return crossoverSchedule;
+	}
+	
+	
+	public Population selectClassPopulation(Population population) {
+		Population classPopulation= new Population(UniversityTimetableScheduling.CLASS_SELECTION_SIZE, data);
+		IntStream.range(0, UniversityTimetableScheduling.CLASS_SELECTION_SIZE).forEach(x -> {
+			classPopulation.getSchedules().set(x, population.getSchedules().get((int) (Math.random()*population.getSchedules().size())));
+		});
+		return classPopulation;
 	}
 
 }
