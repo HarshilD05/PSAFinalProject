@@ -1,6 +1,10 @@
 package university.timetable.scheduling.genetic.algorithm;
+import java.util.ArrayList;
 import java.util.stream.IntStream;
-
+import university.timetable.scheduling.components.*;
+import university.timetable.scheduling.pojo.*;
+import university.timetable.scheduling.data.*;
+import javax.xml.crypto.Data;
 import university.timetable.scheduling.main.UniversityTimetableScheduling;
 
 
@@ -18,9 +22,9 @@ public class GeneticAlgorithm {
 	
 	public Population crossOverPopulation(Population population) {
 		Population crossOverPopulation=new Population(population.getSchedules().size(),data);
-		IntStream.range(0,Driver.NUM_OF_ELITE_SCHEDULES).forEach(x -> crossOverPopulation.getSchedules().set(x,population.getSchedules().get(x)));
+		IntStream.range(0,UniversityTimetableScheduling.NUM_OF_ELITE_SCHEDULES).forEach(x -> crossOverPopulation.getSchedules().set(x,population.getSchedules().get(x)));
 		
-		IntStream.range(Driver.NUM_OF_ELITE_SCHEDULES, population.getSchedules().size()).forEach(x -> {
+		IntStream.range(UniversityTimetableScheduling.NUM_OF_ELITE_SCHEDULES, population.getSchedules().size()).forEach(x -> {
 			if(Driver.CROSSOVER_RATE > Math.random()) {
 				Schedule schedule1=selectClassPopulation(population).sortByFitness().getSchedules().get(0);
 				Schedule schedule2=selectClassPopulation(population).sortByFitness().getSchedules().get(0);
@@ -47,5 +51,17 @@ public class GeneticAlgorithm {
 		});
 		return classPopulation;
 	}
+	
+
+	public Population mutatePopulation(Population population) {
+		Population mutatePopulation= new Population(population.getSchedules().size(), data);
+		ArrayList<Schedule> schedules=mutatePopulation.getSchedules();
+		IntStream.range(0,UniversityTimetableScheduling.NUM_OF_ELITE_SCHEDULES).forEach(x -> schedules.set(x, population.getSchedules().get(x)));
+		IntStream.range(UniversityTimetableScheduling.NUM_OF_ELITE_SCHEDULES,population.getSchedules().size()).forEach(x->{
+			schedules.set(x, mutateSchedule(population.getSchedules().get(x)));
+		});
+		return mutatePopulation;
+	}
+	
 
 }
