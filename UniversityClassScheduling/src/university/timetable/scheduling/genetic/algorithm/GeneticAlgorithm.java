@@ -64,4 +64,12 @@ public class GeneticAlgorithm {
 	}
 	
 
+	public Schedule mutateSchedule(Schedule mutateSchedule) {
+		Schedule schedule=new  Schedule(data).initialize();
+		IntStream.range(0,mutateSchedule.getClasses().size()).forEach(x-> {
+			if(Driver.MUTATION_RATE>Math.random()) {mutateSchedule.getClasses().set(x, schedule.getClasses().get(x));}
+		});
+		return mutateSchedule;
+	}
+	
 }
