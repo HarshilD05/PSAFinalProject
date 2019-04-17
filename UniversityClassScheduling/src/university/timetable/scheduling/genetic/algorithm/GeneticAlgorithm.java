@@ -4,7 +4,7 @@ import java.util.stream.IntStream;
 import university.timetable.scheduling.components.*;
 import university.timetable.scheduling.pojo.*;
 import university.timetable.scheduling.data.*;
-import javax.xml.crypto.Data;
+import university.timetable.scheduling.data.initialization.*;
 import university.timetable.scheduling.main.UniversityTimetableScheduling;
 
 
@@ -25,7 +25,7 @@ public class GeneticAlgorithm {
 		IntStream.range(0,UniversityTimetableScheduling.NUM_OF_ELITE_SCHEDULES).forEach(x -> crossOverPopulation.getSchedules().set(x,population.getSchedules().get(x)));
 		
 		IntStream.range(UniversityTimetableScheduling.NUM_OF_ELITE_SCHEDULES, population.getSchedules().size()).forEach(x -> {
-			if(Driver.CROSSOVER_RATE > Math.random()) {
+			if(UniversityTimetableScheduling.CROSSOVER_RATE > Math.random()) {
 				Schedule schedule1=selectClassPopulation(population).sortByFitness().getSchedules().get(0);
 				Schedule schedule2=selectClassPopulation(population).sortByFitness().getSchedules().get(0);
 				crossOverPopulation.getSchedules().set(x,crossOverSchedule(schedule1, schedule2));
@@ -67,7 +67,7 @@ public class GeneticAlgorithm {
 	public Schedule mutateSchedule(Schedule mutateSchedule) {
 		Schedule schedule=new  Schedule(data).initialize();
 		IntStream.range(0,mutateSchedule.getClasses().size()).forEach(x-> {
-			if(Driver.MUTATION_RATE>Math.random()) {mutateSchedule.getClasses().set(x, schedule.getClasses().get(x));}
+			if(UniversityTimetableScheduling.MUTATION_RATE>Math.random()) {mutateSchedule.getClasses().set(x, schedule.getClasses().get(x));}
 		});
 		return mutateSchedule;
 	}
