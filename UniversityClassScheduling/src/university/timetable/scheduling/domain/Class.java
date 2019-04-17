@@ -1,10 +1,10 @@
 package university.timetable.scheduling.domain;
 
-import com.neu.edu.doamin.Course;
-import com.neu.edu.doamin.Department;
-import com.neu.edu.doamin.Instructor;
-import com.neu.edu.doamin.MeetingTime;
-import com.neu.edu.doamin.Room;
+import university.timetable.scheduling.pojo.Course;
+import university.timetable.scheduling.pojo.Department;
+import university.timetable.scheduling.pojo.Instructor;
+import university.timetable.scheduling.pojo.MeetingTime;
+import university.timetable.scheduling.pojo.Room;
 
 public class Class {
 	private int classId;
