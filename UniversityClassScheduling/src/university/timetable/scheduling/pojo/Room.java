@@ -1,4 +1,5 @@
-package com.neu.edu.doamin;
+package university.timetable.scheduling.pojo;
+
 
 public class Room {
 	private String roomnumber;

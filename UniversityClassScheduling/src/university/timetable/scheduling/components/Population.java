@@ -1,4 +1,5 @@
-package com.neu.edu;
+package university.timetable.scheduling.components;
+import university.timetable.scheduling.data.initialization.*;
 
 import java.util.ArrayList;
 import java.util.stream.IntStream;
