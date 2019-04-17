@@ -3,7 +3,8 @@ package university.timetable.scheduling.main;
 import university.timetable.scheduling.genetic.algorithm.GeneticAlgorithm;
 import java.util.ArrayList;
 import university.timetable.scheduling.components.*;
-import university.timetable.scheduling.data.initialization.*;;
+import university.timetable.scheduling.data.initialization.*;
+import university.timetable.scheduling.domain.Class;
 
 public class UniversityTimetableScheduling {
 	
@@ -55,7 +56,7 @@ public class UniversityTimetableScheduling {
 		System.out.print("   ");
 		System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		classes.forEach(x-> {
-			int majorIndex=data.getDepts().indexOf(x.getDept());
+			int majorIndex=data.getDepts().indexOf(x.getDepartment());
 			int coursesindex=data.getCourses().indexOf(x.getCourse());
 			int roomsIndex=data.getRooms().indexOf(x.getRoom());
 			int instructorsIndex=data.getInstructors().indexOf(x.getInstructor());
