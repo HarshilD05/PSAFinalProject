@@ -1,9 +1,9 @@
-package com.neu.edu;
-
+package university.timetable.scheduling.components;
+import university.timetable.scheduling.data.initialization.*;
 import java.util.ArrayList;
 
-import com.neu.edu.doamin.Department;
-import com.neu.edu.doamin.Class;
+import university.timetable.scheduling.pojo.Department;
+import university.timetable.scheduling.domain.Class;
 
 public class Schedule {
 	
@@ -60,7 +60,7 @@ public class Schedule {
 				numOfConflict++;
 			}
 			classes.stream().filter(y -> classes.indexOf(y) >= classes.indexOf(x)).forEach(y -> {
-				if(x.getMeetingTime() == y.getMeetingTime() && x.getId()!=y.getId()) {
+				if(x.getMeetingTime() == y.getMeetingTime() && x.getClassId()!=y.getClassId()) {
 					if(x.getRoom()==y.getRoom()) { numOfConflict++; }
 					if(x.getInstructor() == y.getInstructor()) {numOfConflict++;}
 				}
@@ -75,6 +75,8 @@ public class Schedule {
 		returnValue += classes.get(classes.size()-1);
 		return returnValue;
 	}
+		
+	
 	
 	
 }
