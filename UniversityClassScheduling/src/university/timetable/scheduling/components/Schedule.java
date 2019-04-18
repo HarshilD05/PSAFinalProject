@@ -1,12 +1,12 @@
 package university.timetable.scheduling.components;
-import university.timetable.scheduling.data.initialization.*;
+
 import java.util.ArrayList;
 
+import university.timetable.scheduling.data.initialization.Data;
 import university.timetable.scheduling.pojo.Department;
 import university.timetable.scheduling.domain.Class;
 
 public class Schedule {
-	
 	private ArrayList<Class> classes;
 	private int classnum=0;
 	private int numOfConflict=0;
@@ -60,7 +60,7 @@ public class Schedule {
 				numOfConflict++;
 			}
 			classes.stream().filter(y -> classes.indexOf(y) >= classes.indexOf(x)).forEach(y -> {
-				if(x.getMeetingTime() == y.getMeetingTime() && x.getClassId()!=y.getClassId()) {
+				if(x.getMeetingTime() == y.getMeetingTime() && x.getId()!=y.getId()) {
 					if(x.getRoom()==y.getRoom()) { numOfConflict++; }
 					if(x.getInstructor() == y.getInstructor()) {numOfConflict++;}
 				}
@@ -75,8 +75,4 @@ public class Schedule {
 		returnValue += classes.get(classes.size()-1);
 		return returnValue;
 	}
-		
-	
-	
-	
 }

@@ -1,8 +1,6 @@
 package university.timetable.scheduling.pojo;
 
-
 public class MeetingTime {
-	
 	private String id;
 	private String time;
 	
@@ -18,5 +16,4 @@ public class MeetingTime {
 	public String getTime() {
 		return time;
 	}
-	
 }
