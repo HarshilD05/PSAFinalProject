@@ -26,9 +26,9 @@ public class Data {
 
 	private Data initialize() {
 		
-		Room room1= new Room("Room1",11);
-		Room room2= new Room("Room2",22);
-		Room room3= new Room("Room3",33);
+		Room room1= new Room("Room1",25);
+		Room room2= new Room("Room2",45);
+		Room room3= new Room("Room3",35);
 		rooms=new ArrayList<Room>(Arrays.asList(room1,room2,room3));
 		
 		MeetingTime meetingTime1=new MeetingTime("MT1", "MWF 09:00 - 10:00");
@@ -37,10 +37,10 @@ public class Data {
 		MeetingTime meetingTime4=new MeetingTime("MT4", "TTH 10:30 - 12:00");
 		meetingTimes=new ArrayList<MeetingTime>(Arrays.asList(meetingTime1,meetingTime2,meetingTime3,meetingTime4));
 		
-		Instructor instructor1= new Instructor("I1", "Kal");
+		Instructor instructor1= new Instructor("I1", "kal");
 		Instructor instructor2= new Instructor("I2", "Robin");
-		Instructor instructor3= new Instructor("I3", "Vishal");
-		Instructor instructor4= new Instructor("I4", "Yusuf");
+		Instructor instructor3= new Instructor("I3", "vishal");
+		Instructor instructor4= new Instructor("I4", "yusuf");
 		instructors=new ArrayList<Instructor>(Arrays.asList(instructor1,instructor2,instructor3,instructor4));
 		
 		Course course1=new Course("c1", "INFO6100", 25, new ArrayList<Instructor>(Arrays.asList(instructor1,instructor2)));

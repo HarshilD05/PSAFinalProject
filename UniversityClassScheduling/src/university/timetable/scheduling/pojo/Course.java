@@ -34,6 +34,5 @@ public class Course {
 	
 	public String toString() {
 		return name;
-		
 	}
 }
