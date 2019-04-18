@@ -1,10 +1,9 @@
 package university.timetable.scheduling.genetic.algorithm;
 import java.util.ArrayList;
 import java.util.stream.IntStream;
-import university.timetable.scheduling.components.*;
-import university.timetable.scheduling.pojo.*;
-import university.timetable.scheduling.data.*;
-import university.timetable.scheduling.data.initialization.*;
+import university.timetable.scheduling.components.Population;
+import university.timetable.scheduling.components.Schedule;
+import university.timetable.scheduling.data.initialization.Data;
 import university.timetable.scheduling.main.UniversityTimetableScheduling;
 
 
@@ -52,7 +51,6 @@ public class GeneticAlgorithm {
 		return classPopulation;
 	}
 	
-
 	public Population mutatePopulation(Population population) {
 		Population mutatePopulation= new Population(population.getSchedules().size(), data);
 		ArrayList<Schedule> schedules=mutatePopulation.getSchedules();
@@ -63,7 +61,6 @@ public class GeneticAlgorithm {
 		return mutatePopulation;
 	}
 	
-
 	public Schedule mutateSchedule(Schedule mutateSchedule) {
 		Schedule schedule=new  Schedule(data).initialize();
 		IntStream.range(0,mutateSchedule.getClasses().size()).forEach(x-> {
