@@ -1,14 +1,14 @@
 package university.timetable.scheduling.main;
 
-import university.timetable.scheduling.genetic.algorithm.GeneticAlgorithm;
 import java.util.ArrayList;
-import university.timetable.scheduling.components.*;
-import university.timetable.scheduling.data.initialization.*;
+
+import university.timetable.scheduling.components.Population;
+import university.timetable.scheduling.components.Schedule;
+import university.timetable.scheduling.data.initialization.Data;
+import university.timetable.scheduling.genetic.algorithm.GeneticAlgorithm;
 import university.timetable.scheduling.domain.Class;
 
 public class UniversityTimetableScheduling {
-	
-
 	public static final int POPULATION_SIZE=9;
 	public static final double MUTATION_RATE=0.1;
 	public static final double CROSSOVER_RATE=0.9;
@@ -56,7 +56,7 @@ public class UniversityTimetableScheduling {
 		System.out.print("   ");
 		System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		classes.forEach(x-> {
-			int majorIndex=data.getDepts().indexOf(x.getDepartment());
+			int majorIndex=data.getDepts().indexOf(x.getDept());
 			int coursesindex=data.getCourses().indexOf(x.getCourse());
 			int roomsIndex=data.getRooms().indexOf(x.getRoom());
 			int instructorsIndex=data.getInstructors().indexOf(x.getInstructor());
@@ -95,6 +95,4 @@ public class UniversityTimetableScheduling {
 		
 		System.out.println("-------------------------------------------------------");
 	}
-	
-	
 }
