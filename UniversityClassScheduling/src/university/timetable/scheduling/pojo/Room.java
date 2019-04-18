@@ -1,6 +1,5 @@
 package university.timetable.scheduling.pojo;
 
-
 public class Room {
 	private String roomnumber;
 	private int seatingCapacity;
@@ -20,6 +19,4 @@ public class Room {
 	public int getSeatingCapacity() {
 		return seatingCapacity;
 	}
-	
-	
 }
