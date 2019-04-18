@@ -7,8 +7,8 @@ import university.timetable.scheduling.pojo.MeetingTime;
 import university.timetable.scheduling.pojo.Room;
 
 public class Class {
-	private int classId;
-	private Department department;
+	private int id;
+	private Department dept;
 	private Course course;
 	private Instructor instructor;
 	private MeetingTime meetingTime;
@@ -16,8 +16,8 @@ public class Class {
 	
 	
 	public Class(int id, Department dept, Course course) {
-		this.classId = id;
-		this.department = dept;
+		this.id = id;
+		this.dept = dept;
 		this.course = course;
 	}
 
@@ -35,12 +35,13 @@ public class Class {
 	}
 
 
-	public int getClassId() {
-		return classId;
+	public int getId() {
+		return id;
 	}
 
-	public Department getDepartment() {
-		return department;
+
+	public Department getDept() {
+		return dept;
 	}
 
 
@@ -64,7 +65,7 @@ public class Class {
 	}
 	
 	public String toString() {
-		return department.getName()+", "+ course.getNumber()+", "+room.getRoomnumber()+", "+ instructor.getName()+", "+meetingTime.getId();
+		return dept.getName()+", "+ course.getNumber()+", "+room.getRoomnumber()+", "+ instructor.getName()+", "+meetingTime.getId();
 		
 	}
 }
