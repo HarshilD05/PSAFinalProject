@@ -4,8 +4,10 @@ import static org.junit.Assert.*;
 import university.timetable.scheduling.data.initialization.Data;
 import university.timetable.scheduling.genetic.algorithm.GeneticAlgorithm;
 import university.timetable.scheduling.components.Population;
+import university.timetable.scheduling.components.Schedule;
 
 import org.junit.Test;
+
 
 public class GeneticAlgorithmTest {
 
@@ -120,5 +122,27 @@ public class GeneticAlgorithmTest {
         assertEquals(population.getSchedules().get(0).getNumOfConflict(),0);
 		
 	}
+	
+
+	@Test
+	public void testCreationofChromosome() {
+        
+		Data data=new Data();
+		data.addRoom("A1", 35);
+		data.addRoom("B1", 30);
+		data.addMeetingTime("MT1","Tue 9:00 - 11:00");
+		data.addMeetingTime("MT2","Tue 13:00 - 15:00");
+		data.addInstructor("I1","proftest1" );
+		data.addInstructor("I2","proftest2" );		
+		data.addCourse("c1", "325K", 25, data.getInstructors());		
+		data.addCourse("c2", "319K", 35, data.getInstructors());
+		data.addDepartment("Maths", data.getCourses());
+		data.addDepartment("EE", data.getCourses());
+		
+		Schedule sc = new Schedule(data);		
+		assertNotNull(sc.getClasses()); 
+	
+	}
+
 
 }
