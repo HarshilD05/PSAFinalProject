@@ -49,5 +49,76 @@ public class GeneticAlgorithmTest {
         assert !s2.equals(s2m) : "mute failed";   
 
 	}
+	
+	@Test
+	public void testFitness() {
+		
+		
+		Data data=new Data();
+		
+		data.addRoom("A1", 35);
+		data.addRoom("B1", 30);
+		data.addMeetingTime("MT1","Tue 9:00 - 11:00");
+		data.addMeetingTime("MT2","Tue 13:00 - 15:00");
+		data.addInstructor("I1","proftest1" );
+		data.addInstructor("I2","proftest2" );		
+		data.addCourse("c1", "325K", 25, data.getInstructors());		
+		data.addCourse("c2", "319K", 35, data.getInstructors());
+		data.addDepartment("Maths", data.getCourses());
+		data.addDepartment("EE", data.getCourses());
+		
+		GeneticAlgorithm ga=new GeneticAlgorithm(data,10,3,1,0.1,0.9);
+		Population population=new Population(15,data);
+		int generationNumber=1;
+
+		while (population.getSchedules().get(0).getFitness()!=1.0) {
+			population= ga.evolve(population).sortByFitness();
+			
+
+			generationNumber++;
+		}
+		System.out.println();
+		System.out.println("Solution found in "+ generationNumber+1 +"generations");
+        System.out.println("Final solution fitness: " + population.getSchedules().get(0).getFitness());
+        
+        assert population.getSchedules().get(0).getFitness() == 1.0 : "passed";
+		
+	}
+	
+	@Test
+	public void testConflicts() {
+		
+			
+		Data data=new Data();
+		
+		data.addRoom("A1", 35);
+		data.addRoom("B1", 30);
+		data.addMeetingTime("MT1","Tue 9:00 - 11:00");
+		data.addMeetingTime("MT2","Tue 13:00 - 15:00");
+		data.addInstructor("I1","proftest1" );
+		data.addInstructor("I2","proftest2" );		
+		data.addCourse("c1", "325K", 25, data.getInstructors());		
+		data.addCourse("c2", "319K", 35, data.getInstructors());
+		data.addDepartment("Maths", data.getCourses());
+		data.addDepartment("EE", data.getCourses());
+		
+		GeneticAlgorithm ga=new GeneticAlgorithm(data,15,3,1,0.1,0.9);
+		Population population=new Population(15,data).sortByFitness();
+		int generationNumber=1;
+
+		while (population.getSchedules().get(0).getFitness()!=1.0) {
+			population= ga.evolve(population).sortByFitness();
+			
+			generationNumber++;
+		}
+		
+		System.out.println();
+		System.out.println("Solution found in "+ generationNumber+1 +"generations");
+        System.out.println("Final solution fitness: " + population.getSchedules().get(0).getFitness());
+        System.out.println("Clashes: " + population.getSchedules().get(0).getNumOfConflict());
+        
+        assertEquals(population.getSchedules().get(0).getNumOfConflict(),0);
+		
+	}
 
 }
