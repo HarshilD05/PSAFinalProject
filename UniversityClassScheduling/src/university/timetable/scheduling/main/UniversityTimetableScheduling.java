@@ -20,7 +20,7 @@ public class UniversityTimetableScheduling {
 	private Data data;
 	public static void main(String args[]) {
 		UniversityTimetableScheduling driver=new UniversityTimetableScheduling();
-		driver.data=new Data();
+		driver.data=new Data().initialize();
 		int generationNumber=0;
 		driver.printAvailableData();
 		

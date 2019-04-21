@@ -145,4 +145,43 @@ public class GeneticAlgorithmTest {
 	}
 
 
+	@Test
+	public void testCrossOver() throws Exception {
+		
+		Data data = new Data();
+		data.addRoom("A1", 15);
+		data.addRoom("B1", 20);
+		data.addMeetingTime("MT1","Tue 9:00 - 11:00");
+		data.addMeetingTime("MT2","Tue 13:00 - 15:00");
+		data.addInstructor("I1","proftest1" );
+		data.addInstructor("I2","proftest2" );		
+		data.addCourse("c1", "325K", 25, data.getInstructors());		
+		data.addCourse("c2", "319K", 35, data.getInstructors());
+		data.addDepartment("Maths", data.getCourses());
+		data.addDepartment("EE", data.getCourses());
+		
+		GeneticAlgorithm ga = new GeneticAlgorithm(data,10,5,0,0,0.9);
+		Population population = new Population(10,data);
+		population.sortByFitness();
+		int generation=1;
+		String s1, s2, s1m, s2m;
+		System.out.println("======Before Crossover=========");
+		s1=population.getSchedules().get(0).toString();
+		s2=population.getSchedules().get(1).toString();
+	    System.out.println(s1);
+        System.out.println(s2);
+        Population p =ga.crossOverPopulation(population);
+        System.out.println("======After Crossover=========");
+        s1m=p.getSchedules().get(0).toString();
+        s2m=p.getSchedules().get(1).toString();
+        System.out.println(s1m);
+        System.out.println(s2m);
+        population.sortByFitness();
+        generation++;
+        p.getSchedules().get(0).getFitness();
+        System.out.println(s1.compareTo(s1m));
+        System.out.println(s2.compareTo(s2m));
+        assert !s2.equals(s2m) : "mute failed";   
+
+	}
 }
