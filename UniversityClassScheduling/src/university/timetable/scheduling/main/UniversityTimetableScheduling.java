@@ -9,11 +9,11 @@ import university.timetable.scheduling.genetic.algorithm.GeneticAlgorithm;
 import university.timetable.scheduling.domain.Class;
 
 public class UniversityTimetableScheduling {
-	public static final int POPULATION_SIZE=9;
-	public static final double MUTATION_RATE=0.1;
-	public static final double CROSSOVER_RATE=0.9;
-	public static final int CLASS_SELECTION_SIZE=3;
-	public static final int NUM_OF_ELITE_SCHEDULES=1;
+	public static  int POPULATION_SIZE=9;
+	public static  double MUTATION_RATE=0.1;
+	public static  double CROSSOVER_RATE=0.9;
+	public static  int CLASS_SELECTION_SIZE=3;
+	public static  int NUM_OF_ELITE_SCHEDULES=1;
 	private int scheduleNum=0;
 	private int classNumb=1;
 	

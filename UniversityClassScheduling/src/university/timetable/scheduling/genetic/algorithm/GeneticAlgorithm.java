@@ -15,6 +15,16 @@ public class GeneticAlgorithm {
 		this.data = data;
 	}
 	
+	public GeneticAlgorithm(Data data,int populationSize,int classSelectionSize,int numberOfEliteSchedule,double mutationRate,double crossoverRate) {
+		this.data=data;
+		UniversityTimetableScheduling.POPULATION_SIZE=populationSize;
+		UniversityTimetableScheduling.CLASS_SELECTION_SIZE=classSelectionSize;
+		UniversityTimetableScheduling.NUM_OF_ELITE_SCHEDULES=numberOfEliteSchedule;
+		UniversityTimetableScheduling.CROSSOVER_RATE=crossoverRate;
+		UniversityTimetableScheduling.MUTATION_RATE=mutationRate;
+		
+	}
+	
 	public Population evolve(Population population) {
 		return mutatePopulation(crossOverPopulation(population));
 	}

@@ -10,21 +10,21 @@ import university.timetable.scheduling.pojo.MeetingTime;
 import university.timetable.scheduling.pojo.Room;
 
 public class Data {
-	private ArrayList<Room> rooms;
-	private ArrayList<Instructor> instructors;
-	private ArrayList<Course> courses;
-	private ArrayList<Department> depts;
-	private ArrayList<MeetingTime> meetingTimes;
+	private ArrayList<Room> rooms = new ArrayList<Room>();
+	private ArrayList<Instructor> instructors=new ArrayList<Instructor>();
+	private ArrayList<Course> courses = new ArrayList<Course>();;
+	private ArrayList<Department> depts=new ArrayList<Department>();;
+	private ArrayList<MeetingTime> meetingTimes=new ArrayList<MeetingTime>();
 	private int numberOfClasses=0;
 	
 	
 	
 	public Data() {
-		initialize();
+	
 	}
 
 
-	private Data initialize() {
+	public Data initialize() {
 		
 		Room room1= new Room("Room1",25);
 		Room room2= new Room("Room2",45);
@@ -91,5 +91,32 @@ public class Data {
 
 	public int getNumberOfClasses() {
 		return numberOfClasses;
+	}
+	
+	public void addRoom(String name, int capacity) {
+		//rooms=new ArrayList<>();
+	    rooms.add(new Room(name,capacity));
+	}
+	
+	public void addInstructor(String name,String id) {
+		//instructors=new ArrayList<>();
+		this.instructors.add(new Instructor(name,id));
+	}
+	
+	public void addCourse(String number, String name, int maxNumberOfStudents, ArrayList<Instructor> instructors) {
+		//courses=new ArrayList<>();
+		 this.courses.add(new Course(number,name,maxNumberOfStudents,instructors));
+	}
+	
+	public void addMeetingTime(String ID,String Time) {
+		//meetingTimes=new ArrayList<>();
+		MeetingTime m=new MeetingTime(ID, Time);
+		meetingTimes.add(m);
+	}
+	
+	public void addDepartment(String name, ArrayList<Course> courses) {
+		//depts=new ArrayList<>();
+		Department d=new Department(name, courses);
+		depts.add(d);
 	}
 }
